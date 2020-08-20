@@ -1,12 +1,15 @@
 
+This is a variant from https://github.com/enriquesoto/terraform-hybrid-cloud-stack/
+Using Azure instead Digital Ocean
+
 # Hybrid Cloud Stack using Terraform 0.12
 
-Code for provisioning a full-production infrastructure (excluding users and its policies that should be created manually and their tokens are used as input). Services from AWS, Digital Ocean, Cloudflare and CircleCI are used: 
+Code for provisioning a full-production infrastructure (excluding users and its policies that should be created manually and their tokens are used as input). Services from AWS, Azure, Cloudflare and CircleCI are used: 
 
 - AWS S3 buckets for managing the remote backend  (tfstate files) and other for production files (media and static files)
 - AWS Elastic Container Registry aimed to storage docker images to allow  the CI/CD workflow 
 - Cloudflare for the DNS management
-- Digital Ocean for supplying the Kubernetes Cluster, the managed Database (Postgres), a Loadbalancer (Helm)  and Virtual Private Networks
+- Azure (AKS) for supplying the Kubernetes Cluster, the managed Database (Postgres), a Loadbalancer (Helm)  and Virtual Private Networks
 - CircleCI : CI/CD  
 
 
