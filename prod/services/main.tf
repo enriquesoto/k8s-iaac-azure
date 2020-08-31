@@ -15,7 +15,7 @@ resource "azurerm_kubernetes_cluster" "bosscluster" {
 
   default_node_pool {
     name       = "default"
-    node_count = 1
+    node_count = 2
     vm_size    = var.vm_size
     # default cidr
     # service_cidr = ["10.0.0.0/16"]
