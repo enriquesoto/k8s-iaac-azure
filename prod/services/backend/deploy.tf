@@ -41,13 +41,13 @@ resource "kubernetes_deployment" "backend_deploy" {
           }
           resources {
             requests {
-              cpu    = "256m"
-              memory = "256Mi"
+              cpu    = "496m"
+              memory = "496Mi"
             }
 
             limits {
-              cpu    = "256m"
-              memory = "256Mi"
+              cpu    = "496m"
+              memory = "496Mi"
             }
           }
           volume_mount {

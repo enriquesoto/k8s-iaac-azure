@@ -17,7 +17,7 @@ resource "aws_s3_bucket" "prod_bucket" {
     allowed_origins = [
       "https://${var.domain}",
       "https://${var.backend_service.subdomain}.${var.domain}",
-      "https://${var.frontend_feed_service.subdomain}.${var.domain}"]
+    "https://${var.frontend_feed_service.subdomain}.${var.domain}"]
     max_age_seconds = 86400 # a day
   }
   tags = {

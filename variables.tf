@@ -16,29 +16,37 @@ variable "resource_group_name" {}
 
 variable "backend_service" {
   type = object({
-    name = string
-    registry_name = string
+    name              = string
+    registry_name     = string
     circle_ci_project = string
-    subdomain = string
+    subdomain         = string
   })
 }
 
 variable "frontend_service" {
   type = object({
-    name = string
-    registry_name = string
+    name              = string
+    registry_name     = string
     circle_ci_project = string
   })
 }
 
 variable "frontend_feed_service" {
   type = object({
-    name = string
-    registry_name = string
+    name              = string
+    registry_name     = string
     circle_ci_project = string
+    subdomain         = string
+  })
+}
+
+variable "monitoring_service" {
+  type = object({
+    name      = string
     subdomain = string
   })
 }
+
 
 
 

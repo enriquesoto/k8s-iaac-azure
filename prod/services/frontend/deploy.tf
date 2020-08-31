@@ -8,7 +8,7 @@ resource "kubernetes_deployment" "frontend_deploy" {
     namespace = data.kubernetes_namespace.frontend.metadata.0.name
   }
   spec {
-    replicas = 2
+    replicas = 3
     selector {
       match_labels = {
         app = "frontend"
@@ -33,11 +33,11 @@ resource "kubernetes_deployment" "frontend_deploy" {
           }
           resources {
             limits {
-              cpu    = "196m"
+              cpu    = "256m"
               memory = "256Mi"
             }
             requests {
-              cpu    = "196m"
+              cpu    = "256m"
               memory = "256Mi"
             }
           }

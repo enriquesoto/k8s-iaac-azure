@@ -15,7 +15,6 @@ resource "cloudflare_record" "api" {
   zone_id = cloudflare_zone.domain.id
   name    = "api"
   value   = data.kubernetes_service.nginx_ingress.load_balancer_ingress.0.ip
-  # value = "164.90.252.31"
   proxied = true
   type    = "A"
   ttl     = 1
@@ -34,7 +33,6 @@ resource "cloudflare_record" "www" {
   zone_id = cloudflare_zone.domain.id
   name    = "www"
   value   = data.kubernetes_service.nginx_ingress.load_balancer_ingress.0.ip
-  # value = "164.90.252.31"
   proxied = true
   type    = "A"
   ttl     = 1
@@ -44,7 +42,15 @@ resource "cloudflare_record" "naked" {
   zone_id = cloudflare_zone.domain.id
   name    = "@"
   value   = data.kubernetes_service.nginx_ingress.load_balancer_ingress.0.ip
-  # value = "164.90.252.31"
+  proxied = true
+  type    = "A"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "monitoring" {
+  zone_id = cloudflare_zone.domain.id
+  name    = var.monitoring_service.subdomain
+  value   = data.kubernetes_service.nginx_ingress.load_balancer_ingress.0.ip
   proxied = true
   type    = "A"
   ttl     = 1
@@ -82,7 +88,7 @@ resource "azurerm_dns_a_record" "www" {
 }
 #backend
 
-resource "azurerm_dns_a_record" "api" { 
+resource "azurerm_dns_a_record" "api" {
   name                = var.backend_service.subdomain
   zone_name           = azurerm_dns_zone.maindomain.name
   resource_group_name = azurerm_resource_group.main_resource_group.name
