@@ -15,6 +15,10 @@ variable "grafana_version" {
   default = "5.5.0"
 }
 
+variable "fluentbit_version" {
+  default = "2.10.0"
+}
+
 variable "domain" {}
 
 
@@ -23,6 +27,16 @@ variable "monitoring_service" {
     name      = string
     subdomain = string
   })
+}
+
+variable "elasticsearch_host" {
+}
+
+variable "elasticsearch_user" {
+}
+
+variable "elasticsearch_password" {
+
 }
 
 locals {
@@ -38,5 +52,11 @@ data "azurerm_kubernetes_cluster" "bosscluster" {
 data "kubernetes_namespace" "monitoring" {
   metadata {
     name = "monitoring"
+  }
+}
+
+data "kubernetes_namespace" "logging" {
+  metadata {
+    name = "logging"
   }
 }

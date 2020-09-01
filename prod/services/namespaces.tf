@@ -54,3 +54,17 @@ resource "kubernetes_namespace" "monitoring" {
   }
 }
 
+resource "kubernetes_namespace" "logging" {
+  metadata {
+    annotations = {
+      name = "logging"
+    }
+
+    labels = {
+      app = "logging"
+    }
+
+    name = "logging"
+  }
+}
+

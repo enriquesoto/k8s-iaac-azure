@@ -47,3 +47,18 @@ resource "helm_release" "grafana" {
   ]
 }
 
+resource "helm_release" "fluentbit" {
+  name       = "fluentbit"
+  chart      = "fluent-bit"
+  repository = "https://kubernetes-charts.storage.googleapis.com"
+  version    = var.fluentbit_version
+  namespace  = data.kubernetes_namespace.logging.metadata.0.name
+  values = [
+    templatefile("${path.module}/templates/fluentbit-values.yaml.tpl", {
+      ES_HOST     = var.elasticsearch_host,
+      ES_USER     = var.elasticsearch_user,
+      ES_PASSWORD = var.elasticsearch_password
+    })
+  ]
+}
+
